@@ -9,9 +9,7 @@
         class="flex relative text-sm rounded-full md:me-0 h-8 w-8 items-center justify-center focus:bg-gray-300 dark:focus:bg-gray-800">
         <small
           class="absolute scale-75 z-10 inline-block -right-1 -top-1 w-5 h-5 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm  tooltip dark:bg-gray-700"
-          [class.opacity-0]="!cart().length"
-          [class.opacity-1]="cart().length"
-          >{{cart().length}}</small>
+          [class.opacity-0]="!cart().length" [class.opacity-1]="cart().length">{{cart().length}}</small>
         <span class="sr-only">Open user menu</span>
         <fa-icon [icon]="faCartShopping"></fa-icon>
       </button>
@@ -50,8 +48,9 @@
 <div
   class="fixed border-l-4 text-black dark:text-white right-0 top-0 z-40 w-72 h-screen p-4 overflow-y-auto transition-transform  bg-white dark:bg-gray-900 "
   [class.translate-x-full]="hideSideMenu()">
-  <div class="flex w-full flex-nowrap items-center justify-between">
-    <h1>Cart</h1>
+  <!-- HEADER -->
+  <div class="flex w-full flex-nowrap items-center justify-between mb-4">
+    <h1 class="font-bold text-lg">Cart</h1>
     <button type="button" (click)="toggleSideMenu()"
       class="flex text-sm rounded-full md:me-0 h-8 w-8 items-center justify-center focus:bg-gray-300 dark:focus:bg-gray-800">
       <span class="sr-only">Close user cart</span>
@@ -59,16 +58,42 @@
     </button>
   </div>
 
+  <!-- BODY -->
 
   <ul class="space-y-2 font-medium">
+
+    <!-- BILL HEADER -->
+    <li
+      class="bg-slate-300 dark:bg-slate-700 rounded-t flex items-center justify-between p-3 pr-5 text-gray dark:text-white mb-3">
+      <span>ITEM</span>
+      <span>PRICE</span>
+    </li>
+
+    <!-- BILL BODY -->
     @for( product of cart(); track product.title){
-    <li class="group">
-      <a href="#"
-        class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 ">
+    <li class="grid grid-cols-[1fr_min-content]  gap-2 justify-between pl-2 pr-4 mb-3 text-gray-900 dark:text-white">
+      <div class="flex flex-col justify-center items-start">
         <span class="ms-3">{{product.title}}</span>
-        <span class="ms-3">{{product.price}}</span>
-      </a>
+        <small class="ms-3 dark:text-gray-400">{{product.creationAt}}</small>
+      </div>
+      <div class="flex justify-center items-center">
+        <span class="ms-3 dark:text-gray-400">{{product.price | currency}}</span>
+      </div>
     </li>
     }
+
+    <!-- BILL FOOTER -->
+    <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
+
+    <li class="flex items-center justify-between text-gray-900 dark:text-white">
+
+      <span class="ms-3">TOTAL</span>
+
+
+
+      <span class="ms-3 dark:text-gray-400">{{total() | currency}}</span>
+
+    </li>
+
   </ul>
 </div>
