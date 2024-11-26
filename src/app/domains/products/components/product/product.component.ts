@@ -3,11 +3,12 @@ import { Product } from '@shared/models/product.model';
 import { CommonModule, NgOptimizedImage } from '@angular/common'
 import { CartService } from '@shared/services/cart.service';
 import { GlobalCurrencyPipe } from "@pipes/date.pipe";
+import { TruncatePipe } from '@pipes/truncate.pipe';
 
 @Component({
   selector: 'app-product',
   standalone: true,
-  imports: [CommonModule, NgOptimizedImage, GlobalCurrencyPipe],
+  imports: [CommonModule, NgOptimizedImage, GlobalCurrencyPipe, TruncatePipe],
   templateUrl: './product.component.html',
   styleUrl: './product.component.scss'
 })

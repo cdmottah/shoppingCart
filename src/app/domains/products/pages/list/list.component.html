@@ -1,10 +1,5 @@
-<div class="container mx-auto">
-
-  <app-header/>
-  <div class="grid grid-cols-3 gap-3">
-    @for (product of products(); track $index) {
-    <app-product [product]="product">  </app-product>
-    }
-  </div>
-
+<div class="flex flex-wrap gap-3 justify-stretch ">
+  @for (product of products(); track $index) {
+  <app-product [product]="product" class="basis-80 flex-grow"> </app-product>
+  }
 </div>

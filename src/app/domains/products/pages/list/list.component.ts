@@ -1,6 +1,6 @@
 import { Component, inject, signal } from '@angular/core';
 import { Product } from "@shared/models/product.model";
-import { HeaderComponent } from '@shared/components/header/header.component';
+
 import { CartService } from '@shared/services/cart.service';
 import { ProductService } from '@shared/services/product.service';
 import { ProductComponent } from '@product/components/product/product.component';
@@ -10,7 +10,6 @@ import { ProductComponent } from '@product/components/product/product.component'
   standalone: true,
   imports: [
     ProductComponent,
-    HeaderComponent
   ],
   templateUrl: './list.component.html',
   styleUrl: './list.component.scss'
