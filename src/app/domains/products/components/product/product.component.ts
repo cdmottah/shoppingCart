@@ -1,12 +1,12 @@
 import { Component, inject, Input } from '@angular/core';
-import { Product } from '../../../shared/models/product.model';
-import { NgOptimizedImage } from '@angular/common'
-import { CartService } from '../../../shared/services/cart.service';
+import { Product } from '@shared/models/product.model';
+import { CommonModule, NgOptimizedImage } from '@angular/common'
+import { CartService } from '@shared/services/cart.service';
 
 @Component({
   selector: 'app-product',
   standalone: true,
-  imports: [NgOptimizedImage],
+  imports: [CommonModule, NgOptimizedImage],
   templateUrl: './product.component.html',
   styleUrl: './product.component.scss'
 })

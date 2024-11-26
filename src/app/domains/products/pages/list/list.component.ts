@@ -1,8 +1,9 @@
 import { Component, inject, signal } from '@angular/core';
-import { ProductComponent } from '../../components/product/product.component';
-import { Product } from "../../../shared/models/product.model";
-import { HeaderComponent } from '../../../shared/components/header/header.component';
-import { CartService } from '../../../shared/services/cart.service';
+import { Product } from "@shared/models/product.model";
+import { HeaderComponent } from '@shared/components/header/header.component';
+import { CartService } from '@shared/services/cart.service';
+import { ProductService } from '@shared/services/product.service';
+import { ProductComponent } from '@product/components/product/product.component';
 
 @Component({
   selector: 'app-list',
@@ -17,51 +18,17 @@ import { CartService } from '../../../shared/services/cart.service';
 export class ListComponent {
 
   private _cartService = inject(CartService)
+  private _productService = inject(ProductService)
 
-  products = signal<Product[]>([
-    {
-      id: Date.now(),
-      image: `https://picsum.photos/640/640?r=${Math.random()}`,
-      title: 'product 1',
-      price: 5000,
-      creationAt: new Date().toISOString()
-    },
-    {
-      id: Date.now(),
-      image: `https://picsum.photos/640/640?r=${Math.random()}`,
-      title: 'product 2',
-      price: 10000,
-      creationAt: new Date().toISOString()
-    },
-    {
-      id: Date.now(),
-      image: `https://picsum.photos/640/640?r=${Math.random()}`,
-      title: 'product 3',
-      price: 17550,
-      creationAt: new Date().toISOString()
-    },
-    {
-      id: Date.now(),
-      image: `https://picsum.photos/640/640?r=${Math.random()}`,
-      title: 'product 3',
-      price: 17550,
-      creationAt: new Date().toISOString()
-    },
-    {
-      id: Date.now(),
-      image: `https://picsum.photos/640/640?r=${Math.random()}`,
-      title: 'product 3',
-      price: 17550,
-      creationAt: new Date().toISOString()
-    },
-    {
-      id: Date.now(),
-      image: `https://picsum.photos/640/640?r=${Math.random()}`,
-      title: 'product 3',
-      price: 17550,
-      creationAt: new Date().toISOString()
-    },
-  ])
+
+  ngOnInit(){
+    this._productService.getProducts().subscribe({
+      next:(products)=>{
+        this.products.set(products)
+      }
+    })
+  }
+  products = signal<Product[]>([ ])
 
   cart = this._cartService.cart;
 }
