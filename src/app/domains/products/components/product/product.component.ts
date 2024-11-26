@@ -1,6 +1,7 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, inject, Input } from '@angular/core';
 import { Product } from '../../../shared/models/product.model';
 import { NgOptimizedImage } from '@angular/common'
+import { CartService } from '../../../shared/services/cart.service';
 
 @Component({
   selector: 'app-product',
@@ -13,11 +14,10 @@ export class ProductComponent {
 
   @Input({ required: true }) product!: Product
 
-  @Output() addToCart = new EventEmitter<Product>()
+  private _cartService = inject(CartService)
 
   addToCartHandler() {
-    console.log('click to child')
-    this.addToCart.emit(this.product)
+    this._cartService.addToCart(this.product)
   }
 
 }

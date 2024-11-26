@@ -1,8 +1,8 @@
-import { Component, Input, signal, WritableSignal, computed } from '@angular/core';
+import { Component, signal, inject } from '@angular/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
 import { faCartShopping, faClose } from '@fortawesome/free-solid-svg-icons';
-import { Product } from '../../models/product.model';
 import { CommonModule } from '@angular/common';
+import { CartService } from '../../services/cart.service';
 
 @Component({
   selector: 'app-header',
@@ -12,17 +12,16 @@ import { CommonModule } from '@angular/common';
   styleUrl: './header.component.scss'
 })
 export class HeaderComponent {
+  private readonly _cartService = inject(CartService)
+
+  readonly cart = this._cartService.cart
+  readonly total = this._cartService.total
+
   readonly faCartShopping = faCartShopping
   readonly faClose = faClose
+  readonly hideSideMenu = signal(true)
 
-  hideSideMenu = signal(true)
 
-  @Input({ required: true }) cart!: WritableSignal<Product[]>
-
-  total = computed(() => {
-    const cartValue = this.cart();
-    return cartValue.reduce((prevValue, currentValue) => { return prevValue += currentValue.price }, 0)
-  })
   toggleSideMenu() {
     this.hideSideMenu.update(res => !res)
   }
