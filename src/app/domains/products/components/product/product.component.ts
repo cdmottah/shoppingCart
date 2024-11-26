@@ -2,11 +2,12 @@ import { Component, inject, Input } from '@angular/core';
 import { Product } from '@shared/models/product.model';
 import { CommonModule, NgOptimizedImage } from '@angular/common'
 import { CartService } from '@shared/services/cart.service';
+import { GlobalCurrencyPipe } from "@pipes/date.pipe";
 
 @Component({
   selector: 'app-product',
   standalone: true,
-  imports: [CommonModule, NgOptimizedImage],
+  imports: [CommonModule, NgOptimizedImage, GlobalCurrencyPipe],
   templateUrl: './product.component.html',
   styleUrl: './product.component.scss'
 })

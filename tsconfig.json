@@ -7,7 +7,8 @@
     "paths": {
       "@shared/*":["./src/app/domains/shared/*"],
       "@product/*":["./src/app/domains/products/*"],
-
+      "@services/*":["./src/app/domains/shared/services/*"],
+      "@pipes/*":["./src/app/domains/shared/pipes/*"]
     },
     "strict": true,
     "noImplicitOverride": true,

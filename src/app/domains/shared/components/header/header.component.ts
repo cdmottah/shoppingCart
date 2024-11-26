@@ -1,13 +1,13 @@
 import { Component, signal, inject } from '@angular/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
 import { faCartShopping, faClose } from '@fortawesome/free-solid-svg-icons';
-import { CommonModule } from '@angular/common';
-import { CartService } from '../../services/cart.service';
+import { CartService } from '@services/cart.service';
+import { GlobalCurrencyPipe } from '@shared/pipes/date.pipe';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [CommonModule, FontAwesomeModule],
+  imports: [ FontAwesomeModule, GlobalCurrencyPipe],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
 })
