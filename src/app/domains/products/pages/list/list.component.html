@@ -1,20 +1,19 @@
-<div class="flex space-x-4">
-  <div class="w-50">
-    <ul class="text-gray-900 dark:text-gray-200">
-      <li class="mb-2 hover:text-gray-800 hover:dark:text-gray-300 ">
-        <a routerLink="/" [class.underline]="!category_id">All</a>
-      </li>
-      @for(category of categories(); track $index){
-      <li class="mb-2 hover:text-gray-800 hover:dark:text-gray-300">
-        <a routerLink="/"
-        [queryParams]="{category_id:category.id}"
-        [class.underline]="category_id == category.id"
-        >
-          {{category.name}}</a>
-      </li>
-      }
-    </ul>
-  </div>
+<div class="flex flex-col gap-4 md:flex-row">
+
+  <ul class="text-gray-900 dark:text-gray-200 flex gap-2 md:flex-col flex-row overflow-y-auto mx-2">
+    <li
+      class="mb-2 hover:text-gray-800 hover:dark:text-gray-300 px-4 py-1 bg-gray-600 dark:bg-gray-800 rounded-full text-sm grid place-content-center">
+      <a routerLink="/" [class.underline]="!category_id">All</a>
+    </li>
+    @for(category of categories(); track $index){
+    <li
+      class="mb-2 hover:text-gray-800 hover:dark:text-gray-300 px-4 py-1 bg-gray-600 dark:bg-gray-800 rounded-full text-sm grid place-content-center">
+      <a routerLink="/" [queryParams]="{category_id:category.id}" [class.underline]="category_id == category.id">
+        {{category.name}}</a>
+    </li>
+    }
+  </ul>
+
   <div class="flex flex-wrap gap-3 justify-stretch w-full">
     @for (product of products(); track $index) {
     <app-product [product]="product" class="basis-80 flex-grow"> </app-product>
