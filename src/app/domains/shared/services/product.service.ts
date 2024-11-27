@@ -14,4 +14,8 @@ export class ProductService {
   getProducts(){
     return this._httpClient.get<Product[]>(`${this._url}/products`)
   }
+
+  getOne(id:string){
+    return this._httpClient.get<Product>(`${this._url}/products/${id}`)
+  }
 }

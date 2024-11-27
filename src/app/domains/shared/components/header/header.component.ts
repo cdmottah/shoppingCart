@@ -3,7 +3,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
 import { faCartShopping, faClose } from '@fortawesome/free-solid-svg-icons';
 import { CartService } from '@services/cart.service';
-import { GlobalCurrencyPipe } from '@pipes/date.pipe';
+import { GlobalCurrencyPipe } from '@shared/pipes/global.currency.pipe';
 import { TruncatePipe } from '@pipes/truncate.pipe';
 
 @Component({

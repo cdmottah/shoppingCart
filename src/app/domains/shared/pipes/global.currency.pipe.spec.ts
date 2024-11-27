@@ -1,4 +1,4 @@
-import { GlobalCurrencyPipe } from './date.pipe';
+import { GlobalCurrencyPipe } from './global.currency.pipe';
 
 describe('DatePipe', () => {
   it('create an instance', () => {
