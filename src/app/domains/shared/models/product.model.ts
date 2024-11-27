@@ -1,3 +1,5 @@
+import { Category } from "./category.model"
+
 export interface Product {
   id: number
   title: string
@@ -7,8 +9,3 @@ export interface Product {
   images: string[]
 }
 
-export interface Category {
-  id: number
-  name: string
-  image: string
-}

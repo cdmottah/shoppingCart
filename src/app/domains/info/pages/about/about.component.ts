@@ -9,7 +9,7 @@ import { WaveAudioComponent } from "../../../info/components/wave-audio/wave-aud
   imports: [CounterComponent, CounterComponent, WaveAudioComponent],
   templateUrl: './about.component.html',
 })
-export class AboutComponent {
+export default class AboutComponent {
 
   duration = signal(1000)
   message = signal('Hola')

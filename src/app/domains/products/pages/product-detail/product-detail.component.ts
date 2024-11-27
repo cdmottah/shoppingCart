@@ -11,7 +11,7 @@ import { ProductService } from '@shared/services/product.service';
   templateUrl: './product-detail.component.html',
   styleUrl: './product-detail.component.scss'
 })
-export class ProductDetailComponent {
+export default class ProductDetailComponent {
 
   @Input() id?: string
   private _productService = inject(ProductService)

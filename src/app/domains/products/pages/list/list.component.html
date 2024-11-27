@@ -1,5 +1,24 @@
-<div class="flex flex-wrap gap-3 justify-stretch ">
-  @for (product of products(); track $index) {
-  <app-product [product]="product" class="basis-80 flex-grow"> </app-product>
-  }
+<div class="flex space-x-4">
+  <div class="w-50">
+    <ul class="text-gray-900 dark:text-gray-200">
+      <li class="mb-2 hover:text-gray-800 hover:dark:text-gray-300 ">
+        <a routerLink="/" [class.underline]="!category_id">All</a>
+      </li>
+      @for(category of categories(); track $index){
+      <li class="mb-2 hover:text-gray-800 hover:dark:text-gray-300">
+        <a routerLink="/"
+        [queryParams]="{category_id:category.id}"
+        [class.underline]="category_id == category.id"
+        >
+          {{category.name}}</a>
+      </li>
+      }
+    </ul>
+  </div>
+  <div class="flex flex-wrap gap-3 justify-stretch w-full">
+    @for (product of products(); track $index) {
+    <app-product [product]="product" class="basis-80 flex-grow"> </app-product>
+    }
+  </div>
+
 </div>
